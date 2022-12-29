@@ -1,0 +1,7 @@
+/.idea
+/docker
+/composer.lock
+/phpunit.xml
+/vendor/
+
+docker-compose*.yaml

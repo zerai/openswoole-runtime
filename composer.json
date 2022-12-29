@@ -1,0 +1,42 @@
+{
+    "name": "zerai/openswoole-runtime",
+    "description": "OpenSwoole runtime",
+    "license": "MIT",
+    "type": "library",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Zerai Teclai",
+            "email": "teclaizerai@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.5",
+        "symfony/runtime": "^5.4 || ^6.0",
+        "webmozart/assert": "^1.9"
+    },
+    "require-dev": {
+        "illuminate/http": "^9.14",
+        "phpunit/phpunit": "^9.5",
+        "openswoole/ide-helper": "^22.0",
+        "symfony/http-foundation": "^5.4 || ^6.0",
+        "symfony/http-kernel": "^5.4 || ^6.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Runtime\\Swoole\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Runtime\\Swoole\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        }
+    }
+}
