@@ -2,6 +2,8 @@
 /docker
 /composer.lock
 /phpunit.xml
+/var
 /vendor/
+/tools/**/vendor
 
 docker-compose*.yaml

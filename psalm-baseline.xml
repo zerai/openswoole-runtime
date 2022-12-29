@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.4.0@62db5d4f6a7ae0a20f7cc5a4952d730272fc0863">
+  <file src="src/CallableRunner.php">
+    <UndefinedClass occurrences="1">
+      <code>$this-&gt;serverFactory-&gt;createServer($this-&gt;application)</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/FileWatcher/InotifyFileWatcher.php">
+    <UndefinedClass occurrences="1">
+      <code>ExtensionNotLoadedException</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/LaravelRunner.php">
+    <UndefinedClass occurrences="3">
+      <code>$this-&gt;serverFactory-&gt;createServer([$this, 'handle'])</code>
+      <code>Request</code>
+      <code>Response</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/Runtime.php">
+    <PossiblyNullArgument occurrences="3">
+      <code>$this-&gt;serverFactory</code>
+      <code>$this-&gt;serverFactory</code>
+      <code>$this-&gt;serverFactory</code>
+    </PossiblyNullArgument>
+  </file>
+  <file src="src/ServerFactory.php">
+    <MixedArgument occurrences="1">
+      <code>$this-&gt;options['project_dir']</code>
+    </MixedArgument>
+    <MixedAssignment occurrences="8">
+      <code>$options['host']</code>
+      <code>$options['hot_reload']</code>
+      <code>$options['hot_reload_interval']</code>
+      <code>$options['mode']</code>
+      <code>$options['port']</code>
+      <code>$options['sock_type']</code>
+      <code>$server</code>
+      <code>$server</code>
+    </MixedAssignment>
+    <MixedInferredReturnType occurrences="2">
+      <code>Server</code>
+      <code>Server</code>
+    </MixedInferredReturnType>
+    <MixedMethodCall occurrences="6">
+      <code>on</code>
+      <code>on</code>
+      <code>reload</code>
+      <code>set</code>
+      <code>set</code>
+      <code>tick</code>
+    </MixedMethodCall>
+    <MixedReturnStatement occurrences="2">
+      <code>$server</code>
+      <code>$server</code>
+    </MixedReturnStatement>
+    <UndefinedClass occurrences="5">
+      <code>Server</code>
+      <code>Server</code>
+      <code>Server</code>
+      <code>Server</code>
+      <code>Server</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SymfonyHttpBridge.php">
+    <MixedInferredReturnType occurrences="1">
+      <code>SymfonyRequest</code>
+    </MixedInferredReturnType>
+    <UndefinedClass occurrences="2">
+      <code>Request</code>
+      <code>Response</code>
+    </UndefinedClass>
+  </file>
+  <file src="src/SymfonyRunner.php">
+    <UndefinedClass occurrences="3">
+      <code>$this-&gt;serverFactory-&gt;createServer([$this, 'handle'])</code>
+      <code>Request</code>
+      <code>Response</code>
+    </UndefinedClass>
+  </file>
+</files>

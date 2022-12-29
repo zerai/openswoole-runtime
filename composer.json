@@ -20,7 +20,8 @@
         "phpunit/phpunit": "^9.5",
         "openswoole/ide-helper": "^22.0",
         "symfony/http-foundation": "^5.4 || ^6.0",
-        "symfony/http-kernel": "^5.4 || ^6.0"
+        "symfony/http-kernel": "^5.4 || ^6.0",
+        "bamarni/composer-bin-plugin": "^1.8"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -36,7 +37,15 @@
     },
     "config": {
         "allow-plugins": {
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "bamarni/composer-bin-plugin": true
+        }
+    },
+    "extra": {
+        "bamarni-bin": {
+            "bin-links": true,
+            "forward-command": false,
+            "target-directory": "tools"
         }
     }
 }
