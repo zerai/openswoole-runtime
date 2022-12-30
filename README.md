@@ -1,13 +1,13 @@
-# Swoole Runtime
+# openSwoole Runtime
 
-A runtime for [Swoole](https://www.swoole.co.uk/).
+A runtime for [OpenSwoole](https://openswoole.com/).
 
 If you are new to the Symfony Runtime component, read more in the [main readme](https://github.com/php-runtime/runtime).
 
 ## Installation
 
 ```
-composer require runtime/swoole
+composer require zerai/openswoole-runtime
 ```
 
 ## Usage
@@ -15,7 +15,7 @@ composer require runtime/swoole
 Define the environment variable `APP_RUNTIME` for your application.
 
 ```
-APP_RUNTIME=Runtime\Swoole\Runtime
+APP_RUNTIME=Zerai\OpenSwoole\Runtime
 ```
 
 ### Pure PHP
