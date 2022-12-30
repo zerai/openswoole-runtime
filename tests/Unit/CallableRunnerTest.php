@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Runtime\Swoole\Tests\Unit;
+namespace Zerai\OpenSwoole\Tests\Unit;
 
+use OpenSwoole\Http\Server;
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\CallableRunner;
-use Runtime\Swoole\ServerFactory;
-use Swoole\Http\Server;
+use Zerai\OpenSwoole\CallableRunner;
+use Zerai\OpenSwoole\ServerFactory;
 
 class CallableRunnerTest extends TestCase
 {

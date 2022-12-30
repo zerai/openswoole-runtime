@@ -1,17 +1,15 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
-
-namespace Runtime\Swoole\Tests\Unit;
+namespace Zerai\OpenSwoole\Tests\Unit;
 
 use Illuminate\Contracts\Http\Kernel;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
+use OpenSwoole\Http\Server;
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\LaravelRunner;
-use Runtime\Swoole\ServerFactory;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
-use Swoole\Http\Server;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
+use Zerai\OpenSwoole\LaravelRunner;
+use Zerai\OpenSwoole\ServerFactory;
 
 class LaravelRunnerTest extends TestCase
 {

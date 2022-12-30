@@ -1,9 +1,14 @@
 {
     "name": "zerai/openswoole-runtime",
-    "description": "OpenSwoole runtime",
-    "license": "MIT",
-    "type": "library",
     "version": "0.1.0",
+    "type": "library",
+    "description": "A openswoole runtime component.",
+    "keywords": [
+        "openswoole",
+        "symfony runtime"
+    ],
+    "homepage": "https://github.com/zerai/openswoole-runtime",
+    "license": "MIT",
     "authors": [
         {
             "name": "Zerai Teclai",
@@ -12,6 +17,7 @@
     ],
     "require": {
         "php": ">=8.0.5",
+        "ext-openswoole": "^22.0",
         "symfony/runtime": "^5.4 || ^6.0",
         "webmozart/assert": "^1.9"
     },
@@ -23,23 +29,16 @@
         "symfony/http-kernel": "^5.4 || ^6.0",
         "bamarni/composer-bin-plugin": "^1.8"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "autoload": {
-        "psr-4": {
-            "Runtime\\Swoole\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Runtime\\Swoole\\Tests\\": "tests/"
-        }
-    },
     "config": {
         "allow-plugins": {
             "symfony/runtime": true,
             "bamarni/composer-bin-plugin": true
-        }
+        },
+        "optimize-autoloader": true,
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
     },
     "extra": {
         "bamarni-bin": {
@@ -47,5 +46,17 @@
             "forward-command": false,
             "target-directory": "tools"
         }
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Zerai\\OpenSwoole\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Zerai\\OpenSwoole\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

@@ -1,21 +1,24 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Tests\Unit;
+namespace Zerai\OpenSwoole\Tests\Unit;
 
 use Illuminate\Contracts\Http\Kernel;
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\CallableRunner;
-use Runtime\Swoole\LaravelRunner;
-use Runtime\Swoole\Runtime;
-use Runtime\Swoole\SymfonyRunner;
+
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\Runtime\Runner\ClosureRunner;
+use Zerai\OpenSwoole\CallableRunner;
+use Zerai\OpenSwoole\LaravelRunner;
+use Zerai\OpenSwoole\Runtime;
+use Zerai\OpenSwoole\SymfonyRunner;
 
 class RuntimeTest extends TestCase
 {
     public function testGetRunnerCreatesARunnerForCallbacks(): void
     {
-        $options = ['error_handler' => false];
+        $options = [
+            'error_handler' => false,
+        ];
         $runtime = new Runtime($options);
 
         $application = static function (): void {
@@ -27,7 +30,9 @@ class RuntimeTest extends TestCase
 
     public function testGetRunnerCreatesARunnerForSymfony(): void
     {
-        $options = ['error_handler' => false];
+        $options = [
+            'error_handler' => false,
+        ];
         $runtime = new Runtime($options);
 
         $application = $this->createMock(HttpKernelInterface::class);
@@ -38,7 +43,9 @@ class RuntimeTest extends TestCase
 
     public function testGetRunnerCreatesARunnerForLaravel(): void
     {
-        $options = ['error_handler' => false];
+        $options = [
+            'error_handler' => false,
+        ];
         $runtime = new Runtime($options);
 
         $application = $this->createMock(Kernel::class);
@@ -49,7 +56,9 @@ class RuntimeTest extends TestCase
 
     public function testGetRunnerFallbacksToClosureRunner(): void
     {
-        $options = ['error_handler' => false];
+        $options = [
+            'error_handler' => false,
+        ];
         $runtime = new Runtime($options);
 
         $runner = $runtime->getRunner(null);

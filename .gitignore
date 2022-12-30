@@ -6,4 +6,5 @@
 /vendor/
 /tools/**/vendor
 
+.phpunit.result.cache
 docker-compose*.yaml

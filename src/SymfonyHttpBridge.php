@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
- * Bridge between Symfony and Swoole Http API.
+ * Bridge between Symfony and OpenSwoole Http API.
  *
  * @author Piotr Kugla <piku235@gmail.com>
  *

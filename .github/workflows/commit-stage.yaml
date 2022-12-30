@@ -39,10 +39,10 @@ jobs:
           - php: '8.1'
             is-php-experimental: false
             generate-coverage-report: false
-#          - php: '8.1'
-#            is-php-experimental: false
-#            generate-coverage-report: false
-#          - php: '8.2'
+          - php: '8.2'
+            is-php-experimental: false
+            generate-coverage-report: false
+#          - php: '8.3'
 #            is-php-experimental: true
 #            generate-coverage-report: false
       fail-fast: true
@@ -133,7 +133,7 @@ jobs:
   checks-composer:
     name: Validate Composer
     runs-on: ubuntu-22.04
-    timeout-minutes: 4
+    timeout-minutes: 5
     strategy:
       matrix:
         php:
@@ -172,16 +172,14 @@ jobs:
           tools: composer, composer-normalize:2.16.0
 
       - name: Install Composer dependencies
-        run: |
-          composer install --prefer-dist --no-progress --no-scripts --ansi
+        run: composer install --prefer-dist --no-progress --no-scripts --ansi
 
       - name: Run composer validate
-        run: |
-          composer validate --strict --ansi
+        run: composer validate --strict --ansi
+        continue-on-error: true
 
       - name: Run composer normalize
-        run: |
-          composer-normalize --dry-run --ansi
+        run: composer-normalize --dry-run --ansi
 
 
   coding-standard:

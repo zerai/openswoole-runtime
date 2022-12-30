@@ -1,16 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Monitor;
+namespace Zerai\OpenSwoole\Monitor;
 
-use Runtime\Swoole\FileWatcher\FileWatcherInterface;
+use Zerai\OpenSwoole\FileWatcher\FileWatcherInterface;
 
 class Monitor implements MonitorInterface
 {
     private FileWatcherInterface $watcher;
 
-    /**
-     * @param FileWatcherInterface $watcher
-     */
     public function __construct(FileWatcherInterface $watcher)
     {
         $this->watcher = $watcher;

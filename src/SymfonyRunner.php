@@ -1,23 +1,26 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\TerminableInterface;
 use Symfony\Component\Runtime\RunnerInterface;
 
 /**
  * A runner for Symfony.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class SymfonyRunner implements RunnerInterface
 {
-    /** @var ServerFactory */
+    /**
+     * @var ServerFactory
+     */
     private $serverFactory;
-    /** @var HttpKernelInterface */
+
+    /**
+     * @var HttpKernelInterface
+     */
     private $application;
 
     public function __construct(ServerFactory $serverFactory, HttpKernelInterface $application)

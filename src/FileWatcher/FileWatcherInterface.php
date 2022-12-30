@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\FileWatcher;
+namespace Zerai\OpenSwoole\FileWatcher;
 
 interface FileWatcherInterface
 {

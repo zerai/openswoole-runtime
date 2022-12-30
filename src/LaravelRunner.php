@@ -1,23 +1,26 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request as LaravelRequest;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
 use Symfony\Component\Runtime\RunnerInterface;
 
 /**
  * A runner for Laravel.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class LaravelRunner implements RunnerInterface
 {
-    /** @var ServerFactory */
+    /**
+     * @var ServerFactory
+     */
     private $serverFactory;
-    /** @var Kernel */
+
+    /**
+     * @var Kernel
+     */
     private $application;
 
     public function __construct(ServerFactory $serverFactory, Kernel $application)

@@ -1,17 +1,16 @@
-<?php
+<?php declare(strict_types=1);
 
-declare(strict_types=1);
+namespace Zerai\OpenSwoole\Tests\Unit;
 
-namespace Runtime\Swoole\Tests\Unit;
-
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
+use OpenSwoole\Http\Server;
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\ServerFactory;
-use Runtime\Swoole\SymfonyRunner;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
-use Swoole\Http\Server;
+
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
+use Zerai\OpenSwoole\ServerFactory;
+use Zerai\OpenSwoole\SymfonyRunner;
 
 class SymfonyRunnerTest extends TestCase
 {

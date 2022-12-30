@@ -1,19 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
 use Symfony\Component\Runtime\RunnerInterface;
 
 /**
  * A simple runner that will run a callable.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class CallableRunner implements RunnerInterface
 {
-    /** @var ServerFactory */
+    /**
+     * @var ServerFactory
+     */
     private $serverFactory;
-    /** @var callable */
+
+    /**
+     * @var callable
+     */
     private $application;
 
     public function __construct(ServerFactory $serverFactory, callable $application)

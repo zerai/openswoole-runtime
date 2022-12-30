@@ -1,11 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Tests\Unit;
+namespace Zerai\OpenSwoole\Tests\Unit;
 
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\SymfonyHttpBridge;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Zerai\OpenSwoole\SymfonyHttpBridge;
 
 /**
  * @author Piotr Kugla <piku235@gmail.com>
@@ -22,11 +23,21 @@ class SymfonyHttpBridgeTest extends TestCase
     public function testThatSwooleRequestIsConverted(): void
     {
         $request = $this->createMock(Request::class);
-        $request->server = ['request_method' => 'post'];
-        $request->header = ['content-type' => 'application/json'];
-        $request->cookie = ['foo' => 'cookie'];
-        $request->get = ['foo' => 'get'];
-        $request->post = ['foo' => 'post'];
+        $request->server = [
+            'request_method' => 'post',
+        ];
+        $request->header = [
+            'content-type' => 'application/json',
+        ];
+        $request->cookie = [
+            'foo' => 'cookie',
+        ];
+        $request->get = [
+            'foo' => 'get',
+        ];
+        $request->post = [
+            'foo' => 'post',
+        ];
         $request->files = [
             'foo' => [
                 'name' => 'file',
@@ -40,11 +51,21 @@ class SymfonyHttpBridgeTest extends TestCase
 
         $sfRequest = SymfonyHttpBridge::convertSwooleRequest($request);
 
-        $this->assertSame(['REQUEST_METHOD' => 'post'], $sfRequest->server->all());
-        $this->assertSame(['content-type' => ['application/json']], $sfRequest->headers->all());
-        $this->assertSame(['foo' => 'cookie'], $sfRequest->cookies->all());
-        $this->assertSame(['foo' => 'get'], $sfRequest->query->all());
-        $this->assertSame(['foo' => 'post'], $sfRequest->request->all());
+        $this->assertSame([
+            'REQUEST_METHOD' => 'post',
+        ], $sfRequest->server->all());
+        $this->assertSame([
+            'content-type' => ['application/json'],
+        ], $sfRequest->headers->all());
+        $this->assertSame([
+            'foo' => 'cookie',
+        ], $sfRequest->cookies->all());
+        $this->assertSame([
+            'foo' => 'get',
+        ], $sfRequest->query->all());
+        $this->assertSame([
+            'foo' => 'post',
+        ], $sfRequest->request->all());
         $this->assertEquals('{"foo": "body"}', $sfRequest->getContent());
 
         $this->assertCount(1, $sfRequest->files);

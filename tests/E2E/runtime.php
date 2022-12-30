@@ -1,13 +1,13 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Tests\E2E;
+namespace Zerai\OpenSwoole\Tests\E2E;
 
-use Runtime\Swoole\Runtime;
-use Swoole\Constant;
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use OpenSwoole\Constant;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
+use Zerai\OpenSwoole\Runtime;
 
-require_once __DIR__.'/../../vendor/autoload.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 $options = [
     'port' => 8001,
@@ -15,7 +15,7 @@ $options = [
     'settings' => [
         Constant::OPTION_WORKER_NUM => 1,
         Constant::OPTION_ENABLE_STATIC_HANDLER => true,
-        Constant::OPTION_DOCUMENT_ROOT => __DIR__.'/static',
+        Constant::OPTION_DOCUMENT_ROOT => __DIR__ . '/static',
     ],
 ];
 

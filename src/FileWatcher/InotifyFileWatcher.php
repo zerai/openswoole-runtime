@@ -1,35 +1,36 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\FileWatcher;
-
-use RuntimeException;
-use Webmozart\Assert\Assert;
+namespace Zerai\OpenSwoole\FileWatcher;
 
 use function array_values;
-use function extension_loaded;
-use function in_array;
+use const IN_MODIFY;
 use function inotify_add_watch;
 use function inotify_init;
 use function inotify_read;
-use function is_array;
 use function is_dir;
+use RuntimeException;
 use function scandir;
 use function sprintf;
 use function stream_set_blocking;
+use Webmozart\Assert\Assert;
 
-use const IN_MODIFY;
+use Zerai\OpenSwoole\Exception\ExtensionNotLoadedException;
 
 class InotifyFileWatcher implements FileWatcherInterface
 {
-    /** @var resource */
+    /**
+     * @var resource
+     */
     private $inotify;
 
-    /** @var string[] */
+    /**
+     * @var string[]
+     */
     private array $filePathByWd = [];
 
     public function __construct()
     {
-        if (! extension_loaded('inotify')) {
+        if (! \extension_loaded('inotify')) {
             throw new ExtensionNotLoadedException('PHP extension "inotify" is required for this file watcher');
         }
 
@@ -52,7 +53,7 @@ class InotifyFileWatcher implements FileWatcherInterface
     {
         $paths = is_dir($path) ? $this->listSubdirectoriesRecursively($path) : [$path];
         foreach ($paths as $toWatch) {
-            $wd                      = inotify_add_watch($this->inotify, $toWatch, IN_MODIFY);
+            $wd = inotify_add_watch($this->inotify, $toWatch, IN_MODIFY);
             $this->filePathByWd[$wd] = $toWatch;
         }
     }
@@ -63,8 +64,8 @@ class InotifyFileWatcher implements FileWatcherInterface
     public function readChangedFilePaths(): array
     {
         $events = inotify_read($this->inotify);
-        $paths  = [];
-        if (is_array($events)) {
+        $paths = [];
+        if (\is_array($events)) {
             foreach ($events as $event) {
                 Assert::isArray($event);
                 /** @var ?string $wd */
@@ -99,7 +100,7 @@ class InotifyFileWatcher implements FileWatcherInterface
         foreach (scandir($path) as $file) {
             Assert::stringNotEmpty($file);
 
-            if (in_array($file, ['.', '..'], true)) {
+            if (\in_array($file, ['.', '..'], true)) {
                 // Skip current/parent directories
                 continue;
             }

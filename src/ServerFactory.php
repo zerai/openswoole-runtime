@@ -1,17 +1,11 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
-use Runtime\Swoole\FileWatcher\InotifyFileWatcher;
-use Runtime\Swoole\Monitor\AlwaysTrueMonitor;
-use Runtime\Swoole\Monitor\Monitor;
-use Swoole\Http\Server;
+use OpenSwoole\Http\Server;
+use Zerai\OpenSwoole\FileWatcher\InotifyFileWatcher;
+use Zerai\OpenSwoole\Monitor\Monitor;
 
-/**
- * A factory for Swoole HTTP Servers.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
- */
 class ServerFactory
 {
     private const DEFAULT_OPTIONS = [
@@ -24,7 +18,9 @@ class ServerFactory
         'settings' => [],
     ];
 
-    /** @var array */
+    /**
+     * @var array
+     */
     private $options;
 
     public static function getDefaultOptions(): array
@@ -46,8 +42,7 @@ class ServerFactory
 
     public function createServer(callable $requestHandler): Server
     {
-
-        if ((bool)$this->options['hot_reload']){
+        if ((bool) $this->options['hot_reload']) {
             return $this->createServerWithHotReload($requestHandler);
         }
 
@@ -71,11 +66,10 @@ class ServerFactory
 
         $server = new Server($this->options['host'], (int) $this->options['port'], (int) $this->options['mode'], (int) $this->options['sock_type']);
         $server->set($this->options['settings']);
-        $server->tick((int) $this->options['hot_reload_interval'], function () use($server, $monitor):void{
-            if ($monitor->filesystemIsChanged()){
+        $server->tick((int) $this->options['hot_reload_interval'], function () use ($server, $monitor): void {
+            if ($monitor->filesystemIsChanged()) {
                 $server->reload();
             }
-
         });
         $server->on('request', $requestHandler);
 

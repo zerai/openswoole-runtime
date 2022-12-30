@@ -1,9 +1,9 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Tests\Unit;
+namespace Zerai\OpenSwoole\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
-use Runtime\Swoole\ServerFactory;
+use Zerai\OpenSwoole\ServerFactory;
 
 /**
  * @runTestsInSeparateProcesses Swoole finds conflicting servers even without start()
@@ -44,7 +44,9 @@ class ServerFactoryTest extends TestCase
         self::assertSame(9501, $server->port);
         self::assertSame(1, $server->mode);
         self::assertSame(2, $server->type);
-        self::assertSame(['worker_num' => 1], $server->setting);
+        self::assertSame([
+            'worker_num' => 1,
+        ], $server->setting);
     }
 
     public function testCreateServerWithPartialOptionsOverride(): void
@@ -66,6 +68,8 @@ class ServerFactoryTest extends TestCase
         self::assertSame($defaults['port'], $server->port);
         self::assertSame(1, $server->mode);
         self::assertSame(2, $server->type);
-        self::assertSame(['worker_num' => 1], $server->setting);
+        self::assertSame([
+            'worker_num' => 1,
+        ], $server->setting);
     }
 }

@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole\Monitor;
+namespace Zerai\OpenSwoole\Monitor;
 
 interface MonitorInterface
 {

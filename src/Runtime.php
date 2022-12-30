@@ -1,6 +1,6 @@
-<?php
+<?php declare(strict_types=1);
 
-namespace Runtime\Swoole;
+namespace Zerai\OpenSwoole;
 
 use Illuminate\Contracts\Http\Kernel;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
@@ -9,12 +9,12 @@ use Symfony\Component\Runtime\SymfonyRuntime;
 
 /**
  * A runtime for Swoole.
- *
- * @author Tobias Nyholm <tobias.nyholm@gmail.com>
  */
 class Runtime extends SymfonyRuntime
 {
-    /** @var ?ServerFactory */
+    /**
+     * @var ?ServerFactory
+     */
     private $serverFactory;
 
     public function __construct(array $options, ?ServerFactory $serverFactory = null)
@@ -25,7 +25,7 @@ class Runtime extends SymfonyRuntime
 
     public function getRunner(?object $application): RunnerInterface
     {
-        if (is_callable($application)) {
+        if (\is_callable($application)) {
             return new CallableRunner($this->serverFactory, $application);
         }
 
