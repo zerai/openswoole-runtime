@@ -1,4 +1,4 @@
-# openSwoole Runtime
+# OpenSwoole Runtime
 
 A runtime for [OpenSwoole](https://openswoole.com/).
 
@@ -23,8 +23,8 @@ APP_RUNTIME=Zerai\OpenSwoole\Runtime
 ```php
 // public/index.php
 
-use Swoole\Http\Request;
-use Swoole\Http\Response;
+use OpenSwoole\Http\Request;
+use OpenSwoole\Http\Response;
 
 require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
 
